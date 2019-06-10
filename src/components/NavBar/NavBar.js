@@ -17,14 +17,12 @@ const navLinks = [
 ];
 
 class NavBarComponent extends Component {
-  tween = null;
   navLinks = [];
   logo = createRef();
   journeyMap = createRef();
 
   componentDidMount() {
     const timeLine = new TimelineLite();
-
     timeLine
       .from(this.logo.current, 1, { x: -80, opacity: 0 })
       .staggerFrom(
