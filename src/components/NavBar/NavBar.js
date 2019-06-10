@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react';
+import React, { createRef, useEffect } from 'react';
 import shortid from 'shortid';
 import { TimelineLite } from 'gsap';
 
@@ -16,49 +16,43 @@ const navLinks = [
   'the lost pages'
 ];
 
-class NavBarComponent extends Component {
-  navLinks = [];
-  logo = createRef();
-  journeyMap = createRef();
+const NavBarComponent = () => {
+  const timeLine = new TimelineLite();
+  const logoRef = createRef();
+  const navLinksRef = createRef();
+  const journeyMapRef = createRef();
 
-  componentDidMount() {
-    const timeLine = new TimelineLite();
+  useEffect(() => {
     timeLine
-      .from(this.logo.current, 1, { x: -80, opacity: 0 })
+      .from(logoRef.current, 1, { x: -80, opacity: 0 }, 'end')
       .staggerFrom(
-        this.navLinks,
+        navLinksRef.current.children,
         0.6,
         { y: -60, opacity: 0, autoAlpha: 1 },
         0.1,
         '-=0.5'
       )
-      .from(this.journeyMap.current, 0.6, { x: 80, opacity: 0 }, '-=0.5');
-  }
+      .from(journeyMapRef.current, 0.6, { x: 80, opacity: 0 }, 'end');
+  });
 
-  render() {
-    return (
-      <div>
-        <NavBar>
-          <Logo src={LogoImg} alt="logo" ref={this.logo} />
-          <nav className="nav">
-            {navLinks.map(link => (
-              <NavLink
-                key={shortid()}
-                className="navLink"
-                ref={el => this.navLinks.push(el)}
-              >
-                {link}
-              </NavLink>
-            ))}
-          </nav>
+  return (
+    <div>
+      <NavBar>
+        <Logo src={LogoImg} alt="logo" ref={logoRef} />
+        <nav className="nav" ref={navLinksRef}>
+          {navLinks.map(link => (
+            <NavLink key={shortid()} className="navLink">
+              {link}
+            </NavLink>
+          ))}
+        </nav>
 
-          <NavLink key={shortid()} ref={this.journeyMap}>
-            journey map
-          </NavLink>
-        </NavBar>
-      </div>
-    );
-  }
-}
+        <NavLink key={shortid()} ref={journeyMapRef}>
+          journey map
+        </NavLink>
+      </NavBar>
+    </div>
+  );
+};
 
 export default NavBarComponent;
