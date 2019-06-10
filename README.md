@@ -1,6 +1,5 @@
 # gsap-practice
-Gee-Zap
 
+Playing around with the [GSAP animation library](https://greensock.com).
 
-
-Learning to use the Gsap animation library by attempting to recreate [https://godofwar.playstation.com/](https://godofwar.playstation.com/)
+Layout inspired by [https://godofwar.playstation.com/](https://godofwar.playstation.com/)
