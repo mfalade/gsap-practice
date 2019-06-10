@@ -23,16 +23,30 @@ const NavBarComponent = () => {
   const journeyMapRef = createRef();
 
   useEffect(() => {
+    const commonTransitions = {
+      opacity: 0,
+      autoAlpha: 0
+    };
+    const animationDuration = 0.6;
+
     timeLine
-      .from(logoRef.current, 1, { x: -80, opacity: 0 })
+      .from(logoRef.current, 1, { ...commonTransitions, x: -80 }, 'end')
       .staggerFrom(
         navLinksRef.current.children,
-        0.6,
-        { y: -60, opacity: 0, autoAlpha: 1 },
+        animationDuration,
+        { ...commonTransitions, y: -60 },
         0.1,
         '-=0.5'
       )
-      .from(journeyMapRef.current, 0.6, { x: 80, opacity: 0 });
+      .from(
+        journeyMapRef.current,
+        animationDuration,
+        {
+          ...commonTransitions,
+          x: 80
+        },
+        'end'
+      );
   });
 
   return (

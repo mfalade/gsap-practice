@@ -10,22 +10,24 @@ export const Footer = styled.footer`
   ul {
     display: flex;
   }
+`;
 
-  ul li {
-    margin-right: 10px;
-    font-size: ${props => props.theme.font.sm};
-    line-height: 1.4;
+export const ListItem = styled.li`
+  margin-right: 10px;
+  font-size: ${props => props.theme.font.sm};
+  line-height: 1.4;
+  visibility: hidden;
 
-    &:nth-child(-n + 2) {
-      width: 50px;
-    }
-  }
-
-  ul img {
-    height: 30px;
+  &:nth-child(-n + 2) {
+    width: 50px;
   }
 
   img {
-    height: 50px;
+    height: 30px;
   }
+`;
+
+export const LogoRating = styled.img`
+  height: 50px;
+  visibility: hidden;
 `;

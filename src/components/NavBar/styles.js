@@ -14,6 +14,7 @@ export const NavLink = styled.a`
   font-size: ${props => props.theme.font.md};
   letter-spacing: 0.16em;
   line-height: 1.7em;
+  visibility: hidden;
 
   &:not(:first-child) {
     margin-left: 16px;
@@ -22,4 +23,5 @@ export const NavLink = styled.a`
 
 export const Logo = styled.img`
   width: 130px;
+  visibility: hidden;
 `;

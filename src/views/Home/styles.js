@@ -27,6 +27,7 @@ export const IntroText = styled.div`
   margin: auto;
   text-align: center;
   transform: translateY(-20px);
+  visibility: hidden;
 `;
 
 export const PlayArrow = styled.img`

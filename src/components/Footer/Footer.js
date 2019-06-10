@@ -5,9 +5,9 @@ import FaceBookIcon from 'assets/images/icon-facebook.png';
 import TwitterIcon from 'assets/images/icon-twitter.png';
 import YoutubeIcon from 'assets/images/icon-youtube.png';
 import InstagramIcon from 'assets/images/icon-instagram.png';
-import LogoRating from 'assets/images/logo-rating.jpg';
+import LogoRatingImage from 'assets/images/logo-rating.jpg';
 
-import { Footer } from './styles';
+import { Footer, ListItem, LogoRating } from './styles';
 
 const FooterContainer = () => {
   const footerLinksRef = createRef();
@@ -16,39 +16,39 @@ const FooterContainer = () => {
   useEffect(() => {
     const transitionDuration = 0.8;
     const staggerInterval = 0.075;
-    const transition = { y: 80, opacity: 0 };
+    const commonTransitions = { y: 80, opacity: 0, autoAlpha: 0 };
     const timeLine = new TimelineLite();
     timeLine
       .staggerFrom(
         footerLinksRef.current.children,
         transitionDuration,
-        { ...transition, autoAlpha: 1 },
+        { ...commonTransitions },
         staggerInterval,
         'end'
       )
-      .from(logoRatingRef.current, transitionDuration, transition, 'end')
-      .delay(1);
+      .from(logoRatingRef.current, transitionDuration, commonTransitions, 'end')
+      .delay(transitionDuration);
   });
 
   return (
     <Footer>
       <ul ref={footerLinksRef}>
-        <li>legal & privacy</li>
-        <li>california privacy</li>
-        <li>
+        <ListItem>legal & privacy</ListItem>
+        <ListItem>california privacy</ListItem>
+        <ListItem>
           <img src={FaceBookIcon} alt="Facebook Icon" />
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <img src={TwitterIcon} alt="Twitter icon" />
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <img src={YoutubeIcon} alt="Youtube icon" />
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <img src={InstagramIcon} alt="Instagram icon" />
-        </li>
+        </ListItem>
       </ul>
-      <img src={LogoRating} alt="logo rating" ref={logoRatingRef} />
+      <LogoRating src={LogoRatingImage} alt="logo rating" ref={logoRatingRef} />
     </Footer>
   );
 };

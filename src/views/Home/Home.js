@@ -24,8 +24,9 @@ const HomeContainer = () => {
     TweenLite.from(introText.current, 1, {
       scaleY: 0,
       opacity: 0,
-      ease: Back.easeOut
-    }).delay(1.2);
+      ease: Back.easeOut,
+      autoAlpha: 0
+    }).delay(1.4);
   });
 
   return (
