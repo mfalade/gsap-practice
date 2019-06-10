@@ -5,7 +5,10 @@ export const Footer = styled.footer`
   justify-content: space-between;
   align-items: center;
   padding: 0 5%;
-  height: 100px;
+  height: ${props => props.theme.specs.footerHeight};
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 
   ul {
     display: flex;

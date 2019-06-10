@@ -5,7 +5,7 @@ export const NavBar = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 4%;
-  height: 80px;
+  height: ${props => props.theme.specs.navbarHeight};
 `;
 
 export const NavLink = styled.a`
