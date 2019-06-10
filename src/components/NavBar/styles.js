@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Text } from 'components/Typography';
-
 export const NavBar = styled.header`
   display: flex;
   align-items: center;
@@ -10,9 +8,12 @@ export const NavBar = styled.header`
   height: 80px;
 `;
 
-export const NavLink = styled(Text)`
+export const NavLink = styled.a`
   display: inline-block;
   cursor: pointer;
+  font-size: ${props => props.theme.font.md};
+  letter-spacing: 0.16em;
+  line-height: 1.7em;
 
   &:not(:first-child) {
     margin-left: 16px;
