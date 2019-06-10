@@ -12,8 +12,7 @@ const navLinks = [
   'media',
   'fan art',
   'gear',
-  'the lost pages',
-  'journey map'
+  'the lost pages'
 ];
 
 const NavBarComponent = () => (

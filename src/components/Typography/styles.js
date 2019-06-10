@@ -5,6 +5,7 @@ export const Title = styled.h1`
   color: ${props => props.theme.color.white};
   letter-spacing: 0.44em;
   line-height: 3.5em;
+  font-family: BerserkerRegular;
 `;
 
 export const Text = styled.p`

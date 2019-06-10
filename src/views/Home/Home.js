@@ -1,6 +1,7 @@
 import React from 'react';
 
 import NavBar from 'components/NavBar';
+import Button from 'components/Button';
 import { Title, Text } from 'components/Typography';
 import thumbNail from 'assets/images/trailer-thumb.jpg';
 
@@ -26,6 +27,7 @@ const HomeContainer = () => (
           the unfamiliar norse lands, unexpected threats, and a second chance at
           being a father.
         </Text>
+        <Button>begin journey</Button>
       </IntroText>
     </Content>
   </Home>

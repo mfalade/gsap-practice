@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 import primaryBgImage from 'assets/images/bg-home.jpg';
+import kratos from 'assets/images/kratos.png';
+import loki from 'assets/images/young-loki.png';
 
 export const Home = styled.div`
   height: 100vh;
@@ -15,10 +17,11 @@ export const Home = styled.div`
 `;
 
 export const Content = styled.section`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
   height: 100%;
+  background-image: url(${kratos}), url(${loki});
+  background-position: 10% 0, 650px 200px;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 830px, 550px;
 `;
 
 export const TrailerThumbnail = styled.div`

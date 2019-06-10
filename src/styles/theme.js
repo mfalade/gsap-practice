@@ -1,5 +1,6 @@
 const colorMap = {
-  white: '#FFF'
+  white: '#FFF',
+  red: '#942736'
 };
 
 const fontSizeMap = {
@@ -8,7 +9,14 @@ const fontSizeMap = {
   lg: '1.5625em'
 };
 
+const transitionMap = {
+  short: '150ms ease-in-out',
+  medium: '300ms ease-in-out',
+  long: '400ms ease-in-out'
+};
+
 export default {
   color: colorMap,
-  font: fontSizeMap
+  font: fontSizeMap,
+  transition: transitionMap
 };
