@@ -1,0 +1,38 @@
+version: 2.0
+jobs:
+  build-and-deploy:
+    working_directory: ~/gsap-practice
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install app dependencies
+          command: |
+            yarn install
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Build static assets
+          command: |
+            yarn run build
+            echo '[Assets Built...]'
+      - run:
+          name: Deploy to firebase
+          command: |
+            ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+workflows:
+  version: 2
+  all:
+    jobs:
+      - build-and-deploy:
+          filters:
+            branches:
+              only: master
