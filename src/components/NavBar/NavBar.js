@@ -24,7 +24,7 @@ const NavBarComponent = () => {
 
   useEffect(() => {
     timeLine
-      .from(logoRef.current, 1, { x: -80, opacity: 0 }, 'end')
+      .from(logoRef.current, 1, { x: -80, opacity: 0 })
       .staggerFrom(
         navLinksRef.current.children,
         0.6,
@@ -32,7 +32,7 @@ const NavBarComponent = () => {
         0.1,
         '-=0.5'
       )
-      .from(journeyMapRef.current, 0.6, { x: 80, opacity: 0 }, 'end');
+      .from(journeyMapRef.current, 0.6, { x: 80, opacity: 0 });
   });
 
   return (
