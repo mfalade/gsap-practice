@@ -15,14 +15,13 @@ export const ButtonInnerContainer = styled.div`
 export const Button = styled.button`
   margin-top: 40px;
   outline: none;
-  text-transform: uppercase;
   background: transparent;
   border: none;
-  color: ${props => props.theme.color.white};
   font-size: 12px;
   letter-spacing: 0.16em;
   padding: 0 30px;
   position: relative;
+  cursor: pointer;
 
   &:before {
     background: url(${btnLeft});

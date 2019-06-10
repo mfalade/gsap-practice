@@ -4,7 +4,7 @@ const colorMap = {
 };
 
 const fontSizeMap = {
-  sm: '0.525em',
+  sm: '0.625em',
   md: '0.78125em',
   lg: '1.5625em'
 };

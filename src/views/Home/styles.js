@@ -1,19 +1,11 @@
 import styled from 'styled-components';
 
-import primaryBgImage from 'assets/images/bg-home.jpg';
 import kratos from 'assets/images/kratos.png';
 import loki from 'assets/images/young-loki.png';
+import thumbNail from 'assets/images/trailer-thumb.jpg';
 
 export const Home = styled.div`
   height: 100vh;
-  background-image: radial-gradient(
-      rgba(255, 255, 255, 0.25),
-      rgba(0, 0, 0, 0.5)
-    ),
-    url(${primaryBgImage});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 `;
 
 export const Content = styled.section`
@@ -24,10 +16,10 @@ export const Content = styled.section`
   background-size: 830px, 550px;
 `;
 
-export const TrailerThumbnail = styled.div`
-  margin: 4% 8%;
-  width: 300px;
-  height: 170px;
+export const CenteredDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const IntroText = styled.div`
@@ -36,6 +28,35 @@ export const IntroText = styled.div`
   text-align: center;
 `;
 
-export const ThumbNail = styled.img`
-  width: 100%;
+export const PlayArrow = styled.img`
+  height: 34px;
+  transform: translateX(-10px);
+  transition: transform ${props => props.theme.transition.medium};
+`;
+
+export const Circle = styled(CenteredDiv)`
+  border: 2px solid ${props => props.theme.color.white};
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  margin-bottom: 16px;
+`;
+
+export const TrailerThumbnail = styled(CenteredDiv)`
+  margin: 4% 8%;
+  width: 300px;
+  height: 170px;
+  background: linear-gradient(rgba(44, 44, 44, 0.6), rgba(44, 44, 44, 0.6)),
+    url(${thumbNail});
+  background-repeat: no-repeat;
+  background-size: cover;
+  letter-spacing: 0.16em;
+  font-size: 0.825em;
+
+  &:hover {
+    ${PlayArrow} {
+      transform: translateX(0);
+      transition: all ${props => props.theme.transition.medium};
+    }
+  }
 `;

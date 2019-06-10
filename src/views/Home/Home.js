@@ -2,15 +2,18 @@ import React from 'react';
 
 import NavBar from 'components/NavBar';
 import Button from 'components/Button';
+import Footer from 'components/Footer';
 import { Title, Text } from 'components/Typography';
-import thumbNail from 'assets/images/trailer-thumb.jpg';
+import PlayArrowImage from 'assets/images/play-arrow.png';
 
 import {
   Home,
   Content,
   TrailerThumbnail,
-  ThumbNail,
-  IntroText
+  Circle,
+  IntroText,
+  PlayArrow,
+  CenteredDiv
 } from './styles';
 
 const HomeContainer = () => (
@@ -18,7 +21,14 @@ const HomeContainer = () => (
     <NavBar />
     <Content>
       <TrailerThumbnail>
-        <ThumbNail src={thumbNail} alt="thumnail" />
+        <div>
+          <CenteredDiv>
+            <Circle>
+              <PlayArrow src={PlayArrowImage} alt="play-arrow" />
+            </Circle>
+          </CenteredDiv>
+          <p>Watch rising kratos</p>
+        </div>
       </TrailerThumbnail>
       <IntroText>
         <Title>A NEW BEGINNING</Title>
@@ -29,6 +39,7 @@ const HomeContainer = () => (
         </Text>
         <Button>begin journey</Button>
       </IntroText>
+      <Footer />
     </Content>
   </Home>
 );
