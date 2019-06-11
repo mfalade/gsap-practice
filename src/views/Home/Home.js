@@ -1,10 +1,14 @@
 import React, { createRef, useEffect } from 'react';
-import { TimelineLite, Back, Power1 } from 'gsap';
+import { TweenLite, TimelineLite, Back, Power1 } from 'gsap';
+import throttle from 'lodash/throttle';
 
 import NavBar from 'components/NavBar';
 import Button from 'components/Button';
 import Footer from 'components/Footer';
 import { Title, Text } from 'components/Typography';
+
+import kratos from 'assets/images/kratos.png';
+import loki from 'assets/images/young-loki.png';
 import PlayArrowImage from 'assets/images/play-arrow.png';
 
 import {
@@ -14,7 +18,8 @@ import {
   Circle,
   IntroText,
   PlayArrow,
-  CenteredDiv
+  CenteredDiv,
+  CharactersContainer
 } from './styles';
 
 const HomeContainer = () => {
@@ -23,22 +28,43 @@ const HomeContainer = () => {
   const playArrowRef = createRef();
   const timeLine = new TimelineLite();
 
-  useEffect(() => {
-    timeLine.to(thumbnailRef.current, 0.8, {
-      scale: 1,
-      opacity: 1,
-      delay: 1
+  const handleMouseMove = ({ clientX, clientY }) => {
+    const xOffset = (clientX / window.innerWidth) * 8;
+    const yOffset = (clientY / window.innerHeight) * 12;
+    TweenLite.to('#kratos', 2, {
+      x: xOffset,
+      y: yOffset,
+      ease: Power1.easeOut
     });
 
-    timeLine
-      .from(introTextRef.current, 1, {
-        scaleY: 0,
-        opacity: 0,
-        ease: Back.easeOut,
-        autoAlpha: 0,
-        delay: 0.4
-      })
+    TweenLite.to('#loki', 2, {
+      x: -xOffset,
+      y: -yOffset,
+      ease: Power1.easeOut,
+      delay: 0.2
+    });
+  };
 
+  useEffect(() => {
+    document.addEventListener('mousemove', throttle(handleMouseMove));
+
+    timeLine
+      .to(thumbnailRef.current, 0.8, {
+        scale: 1,
+        opacity: 1,
+        delay: 1
+      })
+      .from(
+        introTextRef.current,
+        1,
+        {
+          scaleY: 0,
+          opacity: 0,
+          ease: Back.easeOut,
+          autoAlpha: 0
+        },
+        '+=0.4'
+      )
       .to(playArrowRef.current, 1.2, { x: -10, ease: Power1.easeOut });
   });
 
@@ -46,20 +72,22 @@ const HomeContainer = () => {
     <Home>
       <NavBar />
       <Content>
-        <TrailerThumbnail ref={thumbnailRef}>
-          <div>
-            <CenteredDiv>
-              <Circle>
-                <PlayArrow
-                  src={PlayArrowImage}
-                  ref={playArrowRef}
-                  alt="play-arrow"
-                />
-              </Circle>
-            </CenteredDiv>
-            <p>Watch rising kratos</p>
-          </div>
-        </TrailerThumbnail>
+        <div>
+          <TrailerThumbnail ref={thumbnailRef}>
+            <div>
+              <CenteredDiv>
+                <Circle>
+                  <PlayArrow
+                    src={PlayArrowImage}
+                    ref={playArrowRef}
+                    alt="play-arrow"
+                  />
+                </Circle>
+              </CenteredDiv>
+              <p>Watch rising kratos</p>
+            </div>
+          </TrailerThumbnail>
+        </div>
         <IntroText ref={introTextRef}>
           <Title>A NEW BEGINNING</Title>
           <Text>
@@ -69,6 +97,10 @@ const HomeContainer = () => {
           </Text>
           <Button>begin journey</Button>
         </IntroText>
+        <CharactersContainer>
+          <img src={kratos} alt="Kratos" id="kratos" />
+          <img src={loki} alt="Loki" id="loki" />
+        </CharactersContainer>
         <Footer />
       </Content>
     </Home>

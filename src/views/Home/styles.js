@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import kratos from 'assets/images/kratos.png';
-import loki from 'assets/images/young-loki.png';
 import thumbNail from 'assets/images/trailer-thumb.jpg';
 
 export const Home = styled.div`
@@ -9,13 +7,8 @@ export const Home = styled.div`
 `;
 
 export const Content = styled.section`
-  height: calc(100vh - ${props => props.theme.specs.navbarHeight});
-  background-image: url(${kratos}), url(${loki});
-  background-position: 10% 0, 650px 200px;
-  background-repeat: no-repeat, no-repeat;
-  background-size: 830px, 550px;
   display: flex;
-  padding-top: 4%;
+  padding-top: 3%;
   flex-direction: column;
   justify-content: space-between;
 `;
@@ -30,7 +23,7 @@ export const IntroText = styled.div`
   width: 50%;
   margin: auto;
   text-align: center;
-  transform: translateY(-20px);
+  transform: translateY(20px);
   visibility: hidden;
 `;
 
@@ -68,5 +61,27 @@ export const TrailerThumbnail = styled.div`
       transform: translateX(10px);
       transition: all ${props => props.theme.transition.medium};
     }
+  }
+`;
+
+export const CharactersContainer = styled.section`
+  position: relative;
+  z-index: -1;
+
+  img {
+    position: absolute;
+  }
+
+  #kratos {
+    height: 1600px;
+    left: 3%;
+    top: -480px;
+  }
+
+  #loki {
+    height: 700px;
+    left: 58%;
+    top: -250px;
+    z-index: -1;
   }
 `;
