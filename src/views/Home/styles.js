@@ -32,8 +32,7 @@ export const IntroText = styled.div`
 
 export const PlayArrow = styled.img`
   height: 34px;
-  transform: translateX(-10px);
-  transition: transform ${props => props.theme.transition.medium};
+  transform: translateX(0);
 `;
 
 export const Circle = styled(CenteredDiv)`
@@ -44,7 +43,7 @@ export const Circle = styled(CenteredDiv)`
   margin-bottom: 16px;
 `;
 
-export const TrailerThumbnail = styled(CenteredDiv)`
+export const TrailerThumbnail = styled.div`
   margin: 4% 8%;
   width: 300px;
   height: 170px;
@@ -54,10 +53,15 @@ export const TrailerThumbnail = styled(CenteredDiv)`
   background-size: cover;
   letter-spacing: 0.16em;
   font-size: 0.825em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0);
 
   &:hover {
     ${PlayArrow} {
-      transform: translateX(0);
+      transform: translateX(10px);
       transition: all ${props => props.theme.transition.medium};
     }
   }

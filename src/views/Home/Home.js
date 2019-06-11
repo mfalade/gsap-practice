@@ -1,5 +1,5 @@
 import React, { createRef, useEffect } from 'react';
-import { TweenLite, Back } from 'gsap';
+import { TimelineLite, Back, Power1 } from 'gsap';
 
 import NavBar from 'components/NavBar';
 import Button from 'components/Button';
@@ -18,32 +18,49 @@ import {
 } from './styles';
 
 const HomeContainer = () => {
-  const introText = createRef();
+  const introTextRef = createRef();
+  const thumbnailRef = createRef();
+  const playArrowRef = createRef();
+  const timeLine = new TimelineLite();
 
   useEffect(() => {
-    TweenLite.from(introText.current, 1, {
-      scaleY: 0,
-      opacity: 0,
-      ease: Back.easeOut,
-      autoAlpha: 0
-    }).delay(1.4);
+    timeLine.to(thumbnailRef.current, 0.8, {
+      scale: 1,
+      opacity: 1,
+      delay: 1
+    });
+
+    timeLine
+      .from(introTextRef.current, 1, {
+        scaleY: 0,
+        opacity: 0,
+        ease: Back.easeOut,
+        autoAlpha: 0,
+        delay: 0.4
+      })
+
+      .to(playArrowRef.current, 1.2, { x: -10, ease: Power1.easeOut });
   });
 
   return (
     <Home>
       <NavBar />
       <Content>
-        <TrailerThumbnail>
+        <TrailerThumbnail ref={thumbnailRef}>
           <div>
             <CenteredDiv>
               <Circle>
-                <PlayArrow src={PlayArrowImage} alt="play-arrow" />
+                <PlayArrow
+                  src={PlayArrowImage}
+                  ref={playArrowRef}
+                  alt="play-arrow"
+                />
               </Circle>
             </CenteredDiv>
             <p>Watch rising kratos</p>
           </div>
         </TrailerThumbnail>
-        <IntroText ref={introText}>
+        <IntroText ref={introTextRef}>
           <Title>A NEW BEGINNING</Title>
           <Text>
             Living as a man outside the shadows of the gods, kratos must adapt
