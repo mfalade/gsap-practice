@@ -23,7 +23,7 @@ export const IntroText = styled.div`
   width: 50%;
   margin: auto;
   text-align: center;
-  transform: translateY(20px);
+  transform: translateY(25%);
   visibility: hidden;
 `;
 
