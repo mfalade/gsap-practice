@@ -13,7 +13,7 @@ const navLinks = [
   'media',
   'fan art',
   'gear',
-  'the lost pages'
+  'the lost pages',
 ];
 
 const NavBarComponent = () => {
@@ -25,7 +25,7 @@ const NavBarComponent = () => {
   useEffect(() => {
     const commonTransitions = {
       opacity: 0,
-      autoAlpha: 0
+      autoAlpha: 0,
     };
     const animationDuration = 0.6;
 
@@ -36,21 +36,21 @@ const NavBarComponent = () => {
         animationDuration,
         { ...commonTransitions, y: -60 },
         0.1,
-        '-=0.5'
+        '-=0.5',
       )
       .from(
         journeyMapRef.current,
         animationDuration,
         {
           ...commonTransitions,
-          x: 80
+          x: 80,
         },
-        'end'
+        'end',
       );
   });
 
   return (
-    <div>
+    <>
       <NavBar>
         <Logo src={LogoImg} alt="logo" ref={logoRef} />
         <nav className="nav" ref={navLinksRef}>
@@ -65,7 +65,7 @@ const NavBarComponent = () => {
           journey map
         </NavLink>
       </NavBar>
-    </div>
+    </>
   );
 };
 

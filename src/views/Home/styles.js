@@ -9,11 +9,15 @@ export const Home = styled.div`
 `;
 
 export const Content = styled.section`
-  height: 100%;
+  height: calc(100vh - ${props => props.theme.specs.navbarHeight});
   background-image: url(${kratos}), url(${loki});
   background-position: 10% 0, 650px 200px;
   background-repeat: no-repeat, no-repeat;
   background-size: 830px, 550px;
+  display: flex;
+  padding-top: 4%;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const CenteredDiv = styled.div`
@@ -44,7 +48,7 @@ export const Circle = styled(CenteredDiv)`
 `;
 
 export const TrailerThumbnail = styled.div`
-  margin: 4% 8%;
+  margin-left: 8%;
   width: 300px;
   height: 170px;
   background: linear-gradient(rgba(44, 44, 44, 0.6), rgba(44, 44, 44, 0.6)),
